@@ -1,0 +1,5 @@
+﻿aws_region                 = "ap-south-1"
+environment                = "production"
+bucket_prefix              = "response-desk-evidence-vault"
+kms_key_alias              = "alias/response-desk-evidence-cmk"
+object_lock_retention_days = 180

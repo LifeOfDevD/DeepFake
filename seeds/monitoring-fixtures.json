@@ -1,0 +1,73 @@
+[
+  {
+    "observed_url": "https://www.instagram.com/fake_dr_sharma_official/?utm_source=ad",
+    "platform": "instagram",
+    "content_type": "profile",
+    "raw_payload": {
+      "bio": "Official consultations and herbal remedies by Dr. Ramesh Sharma. DM for cures.",
+      "display_name": "Dr. Ramesh Sharma Official",
+      "handle": "fake_dr_sharma_official",
+      "follower_count": 1420
+    },
+    "provenance": {
+      "fixture_type": "synthetic_doctor_impersonation",
+      "dataset_version": "v1.0"
+    }
+  },
+  {
+    "observed_url": "https://twitter.com/ceo_apex_real/status/192837465?ref=feed",
+    "platform": "twitter",
+    "content_type": "post",
+    "raw_payload": {
+      "tweet_text": "Exciting news! We are giving away 500% crypto returns to our loyal investors. Visit bit.ly/apex-scam",
+      "handle": "ceo_apex_real",
+      "display_name": "Vikram Malhotra [CEO Apex]"
+    },
+    "provenance": {
+      "fixture_type": "synthetic_crypto_scam_tweet",
+      "dataset_version": "v1.0"
+    }
+  },
+  {
+    "observed_url": "https://youtube.com/watch?v=mockDeepfakeVideo123&feature=share",
+    "platform": "youtube",
+    "content_type": "video",
+    "raw_payload": {
+      "title": "Deepfake AI Endorsement - Mira Kapoor reveals secret diet pill",
+      "channel_name": "QuickMiracleHealth",
+      "description": "Watch Mira Kapoor endorse this miraculous weight loss pill!"
+    },
+    "provenance": {
+      "fixture_type": "synthetic_deepfake_video",
+      "dataset_version": "v1.0"
+    }
+  },
+  {
+    "observed_url": "https://www.apex-investments-portal.net/login?token=phish",
+    "platform": "domain",
+    "content_type": "domain",
+    "raw_payload": {
+      "title": "Apex Financial Portal Login",
+      "registrar": "Mock Registrar LLC",
+      "domain_created": "2026-09-01"
+    },
+    "provenance": {
+      "fixture_type": "synthetic_lookalike_domain",
+      "dataset_version": "v1.0"
+    }
+  },
+  {
+    "observed_url": "https://instagram.com/dr_sharma_parody_memes/",
+    "platform": "instagram",
+    "content_type": "profile",
+    "raw_payload": {
+      "bio": "Fan and parody account making medical humor memes. Not affiliated with Dr. Ramesh Sharma.",
+      "display_name": "Dr Sharma Parody & Satire",
+      "handle": "dr_sharma_parody_memes"
+    },
+    "provenance": {
+      "fixture_type": "synthetic_parody_satire",
+      "dataset_version": "v1.0"
+    }
+  }
+]

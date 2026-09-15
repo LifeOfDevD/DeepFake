@@ -1,0 +1,48 @@
+﻿version: '3.8'
+
+services:
+  response-desk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: impersonation-response-desk-pilot
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=pilot
+      - PORT=4000
+      - HOST=0.0.0.0
+      - APP_URL=http://localhost:4000
+      - DATABASE_PATH=/app/data/impersonation_desk.db
+      - EVIDENCE_STORAGE_DIR=/app/storage/evidence
+      - EVIDENCE_TEMP_DIR=/app/storage/temp
+      - BACKUP_STORAGE_DIR=/app/storage/backups
+      - SESSION_SECRET=c0ntr0ll3d_p1l0t_s3ss10n_s3cr3t_32_ch4rs_m1n!
+      - DOWNLOAD_TOKEN_SECRET=c0ntr0ll3d_p1l0t_d0wnl04d_s3cr3t_32_ch4rs_m1n!
+      - PILOT_MODE=true
+      - ENABLE_LIVE_PLATFORM_ACTIONS=false
+      - ENABLE_LIVE_BILLING=false
+      - ENABLE_LIVE_NOTIFICATIONS=false
+      - NOTIFICATION_MODE=in_app
+      - BILLING_MODE=dry_run
+      - WORKER_RETENTION_INTERVAL_MS=60000
+      - WORKER_CLOCK_INTERVAL_MS=60000
+      - WORKER_NOTIFICATION_INTERVAL_MS=10000
+      - WORKER_USAGE_INTERVAL_MS=60000
+      - WORKER_BACKUP_VERIFY_INTERVAL_MS=3600000
+    volumes:
+      - response_desk_data:/app/data
+      - response_desk_storage:/app/storage
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:4000/health/readiness"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  response_desk_data:
+    name: response_desk_data_pilot
+  response_desk_storage:
+    name: response_desk_storage_pilot

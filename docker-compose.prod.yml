@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  response-desk-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digital-impersonation-response-desk:production
+    container_name: response-desk-production
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4000:4000"
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - HOST=0.0.0.0
+      - APP_URL=${APP_URL:-https://desk.example.com}
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-https://desk.example.com}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - DOWNLOAD_TOKEN_SECRET=${DOWNLOAD_TOKEN_SECRET}
+      - TOKEN_SIGNING_KEY=${TOKEN_SIGNING_KEY}
+      - ENCRYPTION_MASTER_KEY=${ENCRYPTION_MASTER_KEY}
+      - ENCRYPTION_FALLBACK_KEYS=${ENCRYPTION_FALLBACK_KEYS:-}
+      - DATABASE_PATH=/app/data/response_desk_prod.sqlite
+      - DATABASE_WAL_MODE=true
+      - EVIDENCE_STORAGE_DIR=/app/storage/evidence
+      - EVIDENCE_TEMP_DIR=/app/storage/temp
+      - BACKUP_STORAGE_DIR=/app/storage/backups
+      - STORAGE_BACKEND=local
+      - PILOT_MODE=true
+      - ENABLE_LIVE_PLATFORM_ACTIONS=false
+      - ENABLE_LIVE_BILLING=false
+      - ENABLE_LIVE_NOTIFICATIONS=false
+      - NOTIFICATION_MODE=in_app
+      - BILLING_MODE=dry_run
+      - RATE_LIMIT_ENABLED=true
+    volumes:
+      - prod_data:/app/data
+      - prod_evidence:/app/storage/evidence
+      - prod_backups:/app/storage/backups
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:4000/healthz/ready"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  prod_data:
+    name: response_desk_prod_data
+  prod_evidence:
+    name: response_desk_prod_evidence
+  prod_backups:
+    name: response_desk_prod_backups

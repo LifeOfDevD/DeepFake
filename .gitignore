@@ -1,0 +1,16 @@
+﻿node_modules/
+dist/
+data/*.sqlite*
+data/*.db*
+storage/evidence/*
+storage/temp/*
+storage/backups/*
+storage/staging*/*
+storage/notifications/*
+.env
+.env.staging
+.env.local
+.env.production
+*.log
+.DS_Store
+Thumbs.db

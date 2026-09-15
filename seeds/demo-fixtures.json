@@ -1,0 +1,270 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "generated_at": "2026-09-12T12:00:00Z",
+  "note": "Strictly synthetic demo fixtures. Zero real personal names, private phone numbers, or intimate media. Complies with RFC 2606 reserved domains (.example).",
+  "organizations": [
+    {
+      "id": "org_apex_health_01",
+      "name": "Apex Healthcare Technologies Pvt Ltd",
+      "slug": "apex-health",
+      "industry": "Healthcare & Telemedicine",
+      "jurisdiction": "IN-MH",
+      "primary_contact_email": "ops@apexhealth.example",
+      "created_at": "2026-08-01T09:00:00Z"
+    },
+    {
+      "id": "org_bharatfin_02",
+      "name": "BharatFin Wealth Advisory LLP",
+      "slug": "bharatfin-wealth",
+      "industry": "Financial Services & SEBI Registered Advisory",
+      "jurisdiction": "IN-KA",
+      "primary_contact_email": "compliance@bharatfin.example",
+      "created_at": "2026-08-10T10:30:00Z"
+    },
+    {
+      "id": "org_starlight_03",
+      "name": "Starlight Talent & Creator Network",
+      "slug": "starlight-creators",
+      "industry": "Digital Media & Talent Representation",
+      "jurisdiction": "IN-DL",
+      "primary_contact_email": "legal@starlightcreators.example",
+      "created_at": "2026-08-15T11:00:00Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr_sysadmin_00",
+      "email": "sysadmin@desk.example",
+      "full_name": "Kavita Raman (System Admin)",
+      "system_role": "system_admin",
+      "created_at": "2026-07-01T00:00:00Z"
+    },
+    {
+      "id": "usr_apex_owner_01",
+      "email": "dr.verma@apexhealth.example",
+      "full_name": "Dr. Anand K. Verma (Chief Medical Officer)",
+      "organization_id": "org_apex_health_01",
+      "role": "org_owner",
+      "created_at": "2026-08-01T09:15:00Z"
+    },
+    {
+      "id": "usr_apex_mgr_02",
+      "email": "priya.nair@apexhealth.example",
+      "full_name": "Priya Nair (Incident Response Lead)",
+      "organization_id": "org_apex_health_01",
+      "role": "case_manager",
+      "created_at": "2026-08-01T09:30:00Z"
+    },
+    {
+      "id": "usr_apex_analyst_03",
+      "email": "rohit.sen@apexhealth.example",
+      "full_name": "Rohit Sen (OSINT Analyst)",
+      "organization_id": "org_apex_health_01",
+      "role": "analyst",
+      "created_at": "2026-08-02T10:00:00Z"
+    },
+    {
+      "id": "usr_apex_legal_04",
+      "email": "adv.menon@apexhealth.example",
+      "full_name": "Adv. Siddharth Menon (Legal Counsel)",
+      "organization_id": "org_apex_health_01",
+      "role": "legal_reviewer",
+      "created_at": "2026-08-02T11:00:00Z"
+    },
+    {
+      "id": "usr_apex_client_05",
+      "email": "stakeholder@apexhealth.example",
+      "full_name": "Sunita Rao (Patient Relations Director)",
+      "organization_id": "org_apex_health_01",
+      "role": "read_only_stakeholder",
+      "created_at": "2026-08-05T14:00:00Z"
+    },
+    {
+      "id": "usr_bharatfin_mgr_06",
+      "email": "vikram.seth@bharatfin.example",
+      "full_name": "Vikram Seth (Risk & Compliance Manager)",
+      "organization_id": "org_bharatfin_02",
+      "role": "case_manager",
+      "created_at": "2026-08-10T11:00:00Z"
+    }
+  ],
+  "cases": [
+    {
+      "id": "case_apex_2026_001",
+      "organization_id": "org_apex_health_01",
+      "case_number": "CS-2026-001",
+      "title": "Synthetic AI Video of Dr. Verma Endorsing Unapproved Diabetes Remedy",
+      "category": "synthetic_media_endorsement",
+      "priority": "critical",
+      "status": "human_review",
+      "target_entity": "Dr. Anand K. Verma, CMO Apex Healthcare",
+      "contested_url": "https://video-social.example/posts/89372198",
+      "hosting_platform": "Meta / Instagram",
+      "reported_by_email": "dr.verma@apexhealth.example",
+      "assigned_to_user_id": "usr_apex_mgr_02",
+      "requires_legal_review": true,
+      "statutory_basis": [
+        "IT Act 2000 Section 66C (Identity Theft)",
+        "IT Act 2000 Section 66D (Cheating by Personation)",
+        "IT Rules 2021 Rule 3(1)(b) & Rule 3(2)(b) 24hr Takedown",
+        "Drugs and Magic Remedies (Objectionable Advertisements) Act 1954"
+      ],
+      "created_at": "2026-09-10T08:30:00Z",
+      "updated_at": "2026-09-11T14:20:00Z"
+    },
+    {
+      "id": "case_apex_2026_002",
+      "organization_id": "org_apex_health_01",
+      "case_number": "CS-2026-002",
+      "title": "Fraudulent Support Account Soliciting Patient UPI Payments",
+      "category": "fake_support_account",
+      "priority": "high",
+      "status": "triage",
+      "target_entity": "Apex Healthcare Billing & Helpdesk",
+      "contested_url": "https://messaging-app.example/apex_health_care_bot",
+      "hosting_platform": "Telegram",
+      "reported_by_email": "patient_desk@apexhealth.example",
+      "assigned_to_user_id": "usr_apex_analyst_03",
+      "requires_legal_review": false,
+      "statutory_basis": [
+        "IT Act 2000 Section 66D (Cheating by Personation)",
+        "Bharatiya Nyaya Sanhita 2023 Section 318 (Cheating)"
+      ],
+      "created_at": "2026-09-11T11:00:00Z",
+      "updated_at": "2026-09-11T16:00:00Z"
+    },
+    {
+      "id": "case_bharatfin_2026_003",
+      "organization_id": "org_bharatfin_02",
+      "case_number": "CS-2026-003",
+      "title": "Typosquat Phishing Portal bharatf1n-wealth.example Harvesting Credentials",
+      "category": "look_alike_domain",
+      "priority": "critical",
+      "status": "awaiting_authority",
+      "target_entity": "BharatFin Wealth Advisory LLP",
+      "contested_url": "https://bharatf1n-wealth.example/login",
+      "hosting_platform": "Third-Party Registrar / Hostinger",
+      "reported_by_email": "security@bharatfin.example",
+      "assigned_to_user_id": "usr_bharatfin_mgr_06",
+      "requires_legal_review": true,
+      "statutory_basis": [
+        "IT Act 2000 Section 66C",
+        "Trade Marks Act 1999 (Passing Off)",
+        "INDRP / UDRP Domain Dispute"
+      ],
+      "created_at": "2026-09-11T09:15:00Z",
+      "updated_at": "2026-09-11T12:00:00Z"
+    },
+    {
+      "id": "case_starlight_2026_004",
+      "organization_id": "org_starlight_03",
+      "case_number": "CS-2026-004",
+      "title": "Cloned Profile Stealing Creator Reel Footage and Impersonating Booking Agent",
+      "category": "fake_social_profile",
+      "priority": "medium",
+      "status": "ready_for_submission",
+      "target_entity": "Rhea Kapoor (Verified Creator)",
+      "contested_url": "https://photo-sharing.example/rhea_bookings_vip",
+      "hosting_platform": "Meta / Instagram",
+      "reported_by_email": "talent@starlightcreators.example",
+      "assigned_to_user_id": null,
+      "requires_legal_review": false,
+      "statutory_basis": [
+        "Copyright Act 1957 Section 51",
+        "IT Rules 2021 Rule 3(1)(b)"
+      ],
+      "created_at": "2026-09-12T07:00:00Z",
+      "updated_at": "2026-09-12T10:30:00Z"
+    },
+    {
+      "id": "case_apex_quarantine_005",
+      "organization_id": "org_apex_health_01",
+      "case_number": "CS-2026-005-QUARANTINE",
+      "title": "Test Quarantine Case: Simulated Trigger for Prohibited Content Intercept",
+      "category": "privacy_or_likeness_complaint",
+      "priority": "critical",
+      "status": "blocked",
+      "target_entity": "Quarantine Fixture",
+      "contested_url": "https://quarantine-test.example/flagged-asset",
+      "hosting_platform": "Restricted Test Mock",
+      "reported_by_email": "safety-test@apexhealth.example",
+      "assigned_to_user_id": "usr_apex_mgr_02",
+      "requires_legal_review": true,
+      "statutory_basis": [
+        "CRITICAL EXCLUSION: POCSO / IT Rules Emergency Isolation",
+        "Direct Handoff to NCRP (cybercrime.gov.in) & Helpline 1930"
+      ],
+      "created_at": "2026-09-12T11:45:00Z",
+      "updated_at": "2026-09-12T11:45:00Z"
+    }
+  ],
+  "case_notes": [
+    {
+      "id": "note_01",
+      "case_id": "case_apex_2026_001",
+      "author_user_id": "usr_apex_analyst_03",
+      "author_name": "Rohit Sen",
+      "content": "Completed initial OSINT triage. The voice audio shows clear lip-sync anomalies and synthetic frequency artifacts around 2.4kHz. Audio sample extracted for hash preservation.",
+      "is_internal_only": true,
+      "created_at": "2026-09-10T09:15:00Z"
+    },
+    {
+      "id": "note_02",
+      "case_id": "case_apex_2026_001",
+      "author_user_id": "usr_apex_legal_04",
+      "author_name": "Adv. Siddharth Menon",
+      "content": "Reviewed authority letter from CMO Dr. Verma. Statutory grounds under IT Rules 2021 Rule 3(2)(b) confirmed. 24-hour intermediary clock applies due to deceptive medical advice endangering public safety.",
+      "is_internal_only": true,
+      "created_at": "2026-09-11T14:15:00Z"
+    }
+  ],
+  "audit_events": [
+    {
+      "id": "aud_001",
+      "organization_id": "org_apex_health_01",
+      "actor_user_id": "usr_apex_mgr_02",
+      "actor_email": "priya.nair@apexhealth.example",
+      "action": "case.created",
+      "resource_type": "case",
+      "resource_id": "case_apex_2026_001",
+      "details": {
+        "title": "Synthetic AI Video of Dr. Verma Endorsing Unapproved Diabetes Remedy",
+        "category": "synthetic_media_endorsement"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-10T08:30:00Z"
+    },
+    {
+      "id": "aud_002",
+      "organization_id": "org_apex_health_01",
+      "actor_user_id": "usr_apex_analyst_03",
+      "actor_email": "rohit.sen@apexhealth.example",
+      "action": "case.status_changed",
+      "resource_type": "case",
+      "resource_id": "case_apex_2026_001",
+      "details": {
+        "previous_status": "new",
+        "new_status": "triage"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-10T09:00:00Z"
+    },
+    {
+      "id": "aud_003",
+      "organization_id": "org_apex_health_01",
+      "actor_user_id": "usr_apex_legal_04",
+      "actor_email": "adv.menon@apexhealth.example",
+      "action": "case.status_changed",
+      "resource_type": "case",
+      "resource_id": "case_apex_2026_001",
+      "details": {
+        "previous_status": "triage",
+        "new_status": "human_review",
+        "reason": "Authority documents validated, notice review in progress"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-11T14:20:00Z"
+    }
+  ]
+}

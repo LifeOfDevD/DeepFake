@@ -1,0 +1,51 @@
+{
+  "name": "digital-impersonation-response-desk",
+  "version": "1.0.0",
+  "description": "India-first SaaS product for online impersonation and synthetic-media incident response",
+  "type": "module",
+  "main": "dist/src/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/src/server.js",
+    "seed": "tsx src/db/seed.ts",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:security": "vitest run tests/security",
+    "verify": "vitest run"
+  },
+  "keywords": [
+    "deepfake-response",
+    "impersonation-response",
+    "india-it-act",
+    "it-rules-2021",
+    "grievance-desk",
+    "saas"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "multer": "^2.3.0",
+    "uuid": "^11.1.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/multer": "^2.2.0",
+    "@types/node": "^22.13.10",
+    "@types/supertest": "^6.0.2",
+    "@types/uuid": "^10.0.0",
+    "supertest": "^7.0.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}
