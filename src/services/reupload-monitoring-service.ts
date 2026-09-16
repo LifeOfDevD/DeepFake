@@ -103,6 +103,17 @@ export class ReuploadMonitoringService {
     return rows;
   }
 
+  getObservationsForOrganization(organizationId: string): RelatedContentObservationRecord[] {
+    const rows = this.db
+      .prepare(`
+        SELECT * FROM related_content_observations
+        WHERE organization_id = ?
+        ORDER BY created_at DESC
+      `)
+      .all(organizationId) as RelatedContentObservationRecord[];
+    return rows;
+  }
+
   getObservationById(id: string, organizationId: string): RelatedContentObservationRecord | null {
     const row = this.db
       .prepare('SELECT * FROM related_content_observations WHERE id = ? AND organization_id = ?')

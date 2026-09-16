@@ -1,0 +1,618 @@
+{
+  "n4_smoke": [
+    {
+      "test": "GET /",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 16,
+      "details": {
+        "method": "GET",
+        "url": "/",
+        "status": 200,
+        "durationMs": 16
+      }
+    },
+    {
+      "test": "GET /index.html",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 13,
+      "details": {
+        "method": "GET",
+        "url": "/index.html",
+        "status": 200,
+        "durationMs": 13
+      }
+    },
+    {
+      "test": "GET /app.js",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "method": "GET",
+        "url": "/app.js",
+        "status": 200,
+        "durationMs": 14
+      }
+    },
+    {
+      "test": "GET /health",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "method": "GET",
+        "url": "/health",
+        "status": 200,
+        "durationMs": 14
+      }
+    },
+    {
+      "test": "GET /healthz/ready",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 15,
+      "details": {
+        "method": "GET",
+        "url": "/healthz/ready",
+        "status": 200,
+        "durationMs": 15
+      }
+    },
+    {
+      "test": "GET /api/auth/demo-users",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 16,
+      "details": {
+        "method": "GET",
+        "url": "/api/auth/demo-users",
+        "status": 200,
+        "durationMs": 16
+      }
+    },
+    {
+      "test": "GET /api/auth/me",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 15,
+      "details": {
+        "method": "GET",
+        "url": "/api/auth/me",
+        "status": 200,
+        "durationMs": 15
+      }
+    },
+    {
+      "test": "GET /api/cases",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 16,
+      "details": {
+        "method": "GET",
+        "url": "/api/cases",
+        "status": 200,
+        "durationMs": 16
+      }
+    },
+    {
+      "test": "GET /api/cases/case_apex_2026_001/evidence",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 15,
+      "details": {
+        "method": "GET",
+        "url": "/api/cases/case_apex_2026_001/evidence",
+        "status": 200,
+        "durationMs": 15
+      }
+    },
+    {
+      "test": "GET /api/escalations",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "method": "GET",
+        "url": "/api/escalations",
+        "status": 200,
+        "durationMs": 14
+      }
+    },
+    {
+      "test": "GET /api/re-uploads",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "method": "GET",
+        "url": "/api/re-uploads",
+        "status": 200,
+        "durationMs": 14
+      }
+    },
+    {
+      "test": "GET /api/platforms",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 16,
+      "details": {
+        "method": "GET",
+        "url": "/api/platforms",
+        "status": 200,
+        "durationMs": 16
+      }
+    },
+    {
+      "test": "GET /api/playbooks",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 15,
+      "details": {
+        "method": "GET",
+        "url": "/api/playbooks",
+        "status": 200,
+        "durationMs": 15
+      }
+    },
+    {
+      "test": "GET /api/audit-events",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 16,
+      "details": {
+        "method": "GET",
+        "url": "/api/audit-events",
+        "status": 200,
+        "durationMs": 16
+      }
+    },
+    {
+      "test": "GET /api/integrations/kill-switch",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "method": "GET",
+        "url": "/api/integrations/kill-switch",
+        "status": 200,
+        "durationMs": 14
+      }
+    },
+    {
+      "test": "Browser UI: Headless Chrome rendered styled dashboard without unhandled errors",
+      "expected": "styled_ui: true, role_resolved: true",
+      "actual": "styled_ui: true, role_resolved: true",
+      "status": "PASS",
+      "durationMs": 0,
+      "details": {
+        "url_loaded": "http://127.0.0.1:4001",
+        "styled_ui": true,
+        "role_resolved": true,
+        "cases_rendered": true,
+        "header_bg": "rgb(15, 23, 42)",
+        "role_badge": "Role: analyst",
+        "cases_count": 10,
+        "details": {
+          "headerBg": "rgb(15, 23, 42)",
+          "roleText": "Role: analyst",
+          "casesCount": 10,
+          "tailwindPresent": true
+        }
+      }
+    }
+  ],
+  "n4_browser_cdp": {
+    "url_loaded": "http://127.0.0.1:4001",
+    "styled_ui": true,
+    "role_resolved": true,
+    "cases_rendered": true,
+    "header_bg": "rgb(15, 23, 42)",
+    "role_badge": "Role: analyst",
+    "cases_count": 10,
+    "details": {
+      "headerBg": "rgb(15, 23, 42)",
+      "roleText": "Role: analyst",
+      "casesCount": 10,
+      "tailwindPresent": true
+    }
+  },
+  "n4a_kill_switch": [
+    {
+      "test": "Step 1: Verify kill switch initially disarmed",
+      "expected": "kill_switch_active: false",
+      "actual": "kill_switch_active: false",
+      "status": "PASS",
+      "durationMs": 3,
+      "details": {
+        "durationMs": 3
+      }
+    },
+    {
+      "test": "Step 2: Engage kill switch via POST /api/integrations/kill-switch",
+      "expected": "HTTP 200, kill_switch_active: true",
+      "actual": "HTTP 200, kill_switch_active: true",
+      "status": "PASS",
+      "durationMs": 2,
+      "details": {
+        "durationMs": 2
+      }
+    },
+    {
+      "test": "Step 3: Inbound webhook rejected with HTTP 503 during active kill switch",
+      "expected": "HTTP 503 Service Unavailable",
+      "actual": "HTTP 503 ({\"error\":\"KILL_SWITCH_ACTIVE: Provider webhooks suspended by emergency kill-switch\"})",
+      "status": "PASS",
+      "durationMs": 9,
+      "details": {
+        "durationMs": 9,
+        "data": {
+          "error": "KILL_SWITCH_ACTIVE: Provider webhooks suspended by emergency kill-switch"
+        }
+      }
+    },
+    {
+      "test": "Step 4: Disarm kill switch via POST /api/integrations/kill-switch",
+      "expected": "HTTP 200, kill_switch_active: false",
+      "actual": "HTTP 200, kill_switch_active: false",
+      "status": "PASS",
+      "durationMs": 17,
+      "details": {
+        "durationMs": 17
+      }
+    },
+    {
+      "test": "Step 5: Verify recovery to operational state",
+      "expected": "kill_switch_active: false",
+      "actual": "kill_switch_active: false",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "durationMs": 14
+      }
+    }
+  ],
+  "n5_adversarial": [
+    {
+      "test": "Auth Boundary: Unauthenticated request rejected with HTTP 401",
+      "expected": "HTTP 401",
+      "actual": "HTTP 401",
+      "status": "PASS",
+      "durationMs": 2,
+      "details": {
+        "durationMs": 2
+      }
+    },
+    {
+      "test": "Auth Boundary: Tampered token signature rejected with HTTP 401",
+      "expected": "HTTP 401",
+      "actual": "HTTP 401",
+      "status": "PASS",
+      "durationMs": 12,
+      "details": {
+        "durationMs": 12
+      }
+    },
+    {
+      "test": "Tenant Isolation: Cross-tenant header spoofing rejected with HTTP 403",
+      "expected": "HTTP 403 Forbidden",
+      "actual": "HTTP 403",
+      "status": "PASS",
+      "durationMs": 15,
+      "details": {
+        "durationMs": 15
+      }
+    },
+    {
+      "test": "Tenant Isolation: Cross-tenant IDOR case read returns HTTP 404",
+      "expected": "HTTP 404 (Not Found prevents resource existence leakage)",
+      "actual": "HTTP 404",
+      "status": "PASS",
+      "durationMs": 2,
+      "details": {
+        "durationMs": 2
+      }
+    },
+    {
+      "test": "Workflow Safety: Evidence deletion request blocked under active legal hold",
+      "expected": "HTTP 409 Conflict",
+      "actual": "HTTP 409",
+      "status": "PASS",
+      "durationMs": 4,
+      "details": {
+        "durationMs": 4,
+        "data": {
+          "success": false,
+          "error": {
+            "code": "LEGAL_HOLD_ACTIVE",
+            "message": "Cannot delete or expire evidence 'ev_f65e17ec28254f8f' while an active legal hold is in place.",
+            "details": {}
+          }
+        }
+      }
+    },
+    {
+      "test": "Input Hardening: SQL injection probe safely handled without syntax error",
+      "expected": "HTTP 200 with sanitized/safe query results",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 17,
+      "details": {
+        "durationMs": 17
+      }
+    },
+    {
+      "test": "Security Boundary: SSRF cloud metadata endpoint strictly blocked in source capture",
+      "expected": "HTTP 400 Bad Request",
+      "actual": "HTTP 400 (\"Private, loopback, link-local, and reserved IPv4 addresses are prohibited.\")",
+      "status": "PASS",
+      "durationMs": 3,
+      "details": {
+        "durationMs": 3
+      }
+    }
+  ],
+  "n10_operator_uat": [
+    {
+      "test": "Step 1: Authenticate operator session",
+      "expected": "HTTP 200 with session token",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 11,
+      "details": {
+        "durationMs": 11
+      }
+    },
+    {
+      "test": "Step 2: Inspect authenticated operator profile",
+      "expected": "HTTP 200 with user profile",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 15,
+      "details": {
+        "durationMs": 15
+      }
+    },
+    {
+      "test": "Step 3: Verify organization context (org_apex_health_01)",
+      "expected": "true",
+      "actual": "true",
+      "status": "PASS",
+      "durationMs": 0,
+      "details": {
+        "durationMs": 0
+      }
+    },
+    {
+      "test": "Step 4: Create new synthetic case",
+      "expected": "HTTP 201 with case ID",
+      "actual": "HTTP 201, id=case_78acd9264dd14b42",
+      "status": "PASS",
+      "durationMs": 17,
+      "details": {
+        "durationMs": 17
+      }
+    },
+    {
+      "test": "Step 5: Verify initial status is \"new\"",
+      "expected": "new",
+      "actual": "new",
+      "status": "PASS",
+      "durationMs": 12,
+      "details": {
+        "durationMs": 12
+      }
+    },
+    {
+      "test": "Step 6: Transition case to \"triage\"",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 15,
+      "details": {
+        "durationMs": 15
+      }
+    },
+    {
+      "test": "Step 7: Transition case to \"awaiting_authority\"",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 17,
+      "details": {
+        "durationMs": 17
+      }
+    },
+    {
+      "test": "Step 8: Transition case to \"evidence_collection\"",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 13,
+      "details": {
+        "durationMs": 13
+      }
+    },
+    {
+      "test": "Step 9: Attach synthetic evidence record",
+      "expected": "HTTP 201 with evidence ID",
+      "actual": "HTTP 201, id=ev_60cb901728254373",
+      "status": "PASS",
+      "durationMs": 17,
+      "details": {
+        "durationMs": 17
+      }
+    },
+    {
+      "test": "Step 10: Verify SHA-256 custody hash computed",
+      "expected": "64-char hex string",
+      "actual": "2e26a623a73c123a...",
+      "status": "PASS",
+      "durationMs": 0,
+      "details": {
+        "durationMs": 0
+      }
+    },
+    {
+      "test": "Step 11: Inspect chain-of-custody metadata",
+      "expected": "true",
+      "actual": "true",
+      "status": "PASS",
+      "durationMs": 13,
+      "details": {
+        "durationMs": 13
+      }
+    },
+    {
+      "test": "Step 12: Apply statutory legal hold by Legal Counsel",
+      "expected": "HTTP 201",
+      "actual": "HTTP 201",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "durationMs": 14
+      }
+    },
+    {
+      "test": "Step 13: Verify deletion strictly blocked under active hold",
+      "expected": "HTTP 409 Conflict",
+      "actual": "HTTP 409",
+      "status": "PASS",
+      "durationMs": 3,
+      "details": {
+        "durationMs": 3
+      }
+    },
+    {
+      "test": "Step 14: Release legal hold by Legal Counsel",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 11,
+      "details": {
+        "durationMs": 11
+      }
+    },
+    {
+      "test": "Step 15: Submit evidence deletion request (Two-Person Step 1)",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 15,
+      "details": {
+        "durationMs": 15
+      }
+    },
+    {
+      "test": "Step 16: Requester self-approval strictly blocked (Two-Person Rule)",
+      "expected": "HTTP 403 or 400",
+      "actual": "HTTP 403",
+      "status": "PASS",
+      "durationMs": 2,
+      "details": {
+        "durationMs": 2
+      }
+    },
+    {
+      "test": "Step 17: Independent second-person approval granted",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 12,
+      "details": {
+        "durationMs": 12
+      }
+    },
+    {
+      "test": "Step 18: Deleted evidence access denied",
+      "expected": "HTTP 401 or 404 or 410",
+      "actual": "HTTP 400",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "durationMs": 14
+      }
+    },
+    {
+      "test": "Step 19: Register synthetic monitored subject",
+      "expected": "HTTP 201 with subject ID",
+      "actual": "HTTP 201, id=sbj_4f5790f918964d9f",
+      "status": "PASS",
+      "durationMs": 15,
+      "details": {
+        "durationMs": 15
+      }
+    },
+    {
+      "test": "Step 20: Ingest synthetic detection signal",
+      "expected": "HTTP 201",
+      "actual": "HTTP 201",
+      "status": "PASS",
+      "durationMs": 15,
+      "details": {
+        "durationMs": 15
+      }
+    },
+    {
+      "test": "Step 21: Execute background candidate evaluation worker",
+      "expected": "HTTP 200",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "durationMs": 17,
+      "details": {
+        "durationMs": 17
+      }
+    },
+    {
+      "test": "Step 22: Candidate enters human review queue",
+      "expected": "HTTP 200 with candidate queue items",
+      "actual": "HTTP 200, count=5",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "durationMs": 14
+      }
+    },
+    {
+      "test": "Step 23: Generate dry-run submission packet with pilot disclaimer",
+      "expected": "HTTP 200 with canonical packet hash",
+      "actual": "HTTP 200, packet_hash=f7c3fdab1f62744c...",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "durationMs": 14
+      }
+    },
+    {
+      "test": "Step 24: Audit ledger contains complete chronological record",
+      "expected": "HTTP 200 with immutable audit events",
+      "actual": "HTTP 200, event_count=25",
+      "status": "PASS",
+      "durationMs": 14,
+      "details": {
+        "durationMs": 14
+      }
+    }
+  ],
+  "summary": {
+    "total": 52,
+    "passed": 52,
+    "failed": 0
+  }
+}

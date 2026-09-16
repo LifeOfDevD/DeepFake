@@ -14,21 +14,22 @@ export function createSecurityHeadersMiddleware() {
       ? {
           directives: {
             defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", "'unsafe-inline'"], // UI uses vanilla inline event bindings
-            styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https://cdn.tailwindcss.com'], // UI uses vanilla inline event bindings and Tailwind CDN
+            styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://cdn.tailwindcss.com'],
             fontSrc: ["'self'", 'https://fonts.gstatic.com'],
             imgSrc: ["'self'", 'data:', 'https:'],
             connectSrc: ["'self'"],
             frameAncestors: ["'none'"],
             objectSrc: ["'none'"],
-            baseUri: ["'self'"]
+            baseUri: ["'self'"],
+            upgradeInsecureRequests: null
           }
         }
       : false, // Permissive in dev/test for rapid local debugging
     frameguard: {
       action: 'deny'
     },
-    hsts: isProd
+    hsts: isProd && config.appUrl.startsWith('https://')
       ? {
           maxAge: 31536000,
           includeSubDomains: true,

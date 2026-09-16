@@ -710,14 +710,20 @@ async function loadSubmissionPacket(caseId) {
     const res = await apiRequest(`/api/cases/${caseId}/submission-packet`);
     const packet = res.data;
 
-    document.getElementById('packetDigestBadge').textContent = `SHA-256: ${packet.packet_hash}`;
-    document.getElementById('packetMarkdownView').textContent = packet.packet_markdown;
-    document.getElementById('packetJsonView').textContent = packet.packet_json;
+    const digestBadge = document.getElementById('packetDigestBadge');
+    if (digestBadge) digestBadge.textContent = `SHA-256: ${packet.packet_hash}`;
+    const mdView = document.getElementById('packetMarkdownView');
+    if (mdView) mdView.textContent = packet.packet_markdown;
+    const jsonView = document.getElementById('packetJsonView');
+    if (jsonView) jsonView.textContent = packet.packet_json;
 
-    document.getElementById('btnCopyPacketJson').onclick = () => {
-      navigator.clipboard.writeText(packet.packet_json);
-      alert('Canonical JSON copied to clipboard.');
-    };
+    const copyBtn = document.getElementById('btnCopyPacketJson');
+    if (copyBtn) {
+      copyBtn.onclick = () => {
+        navigator.clipboard.writeText(packet.packet_json);
+        alert('Canonical JSON copied to clipboard.');
+      };
+    }
   } catch (err) {
     console.error('Failed to load submission packet:', err);
   }
@@ -1748,19 +1754,22 @@ function setupModals() {
   });
 
   // Simulate Submission Dispatch
-  document.getElementById('btnSimulateSubmissionDispatch').addEventListener('click', async () => {
-    if (!activeCaseId) return;
-    if (!confirm('Simulate dispatching the dry-run takedown notice packet to intermediary legal operations?')) return;
+  const btnSimulateDispatch = document.getElementById('btnSimulateSubmissionDispatch');
+  if (btnSimulateDispatch) {
+    btnSimulateDispatch.addEventListener('click', async () => {
+      if (!activeCaseId) return;
+      if (!confirm('Simulate dispatching the dry-run takedown notice packet to intermediary legal operations?')) return;
 
-    try {
-      await apiRequest(`/api/cases/${activeCaseId}/simulate-submission`, { method: 'POST' });
-      alert('Submission simulation completed successfully. Packet status updated to simulated.');
-      await openCaseDetail(activeCaseId);
-      await loadCases();
-    } catch (err) {
-      alert('Submission simulation failed: ' + err.message);
-    }
-  });
+      try {
+        await apiRequest(`/api/cases/${activeCaseId}/simulate-submission`, { method: 'POST' });
+        alert('Submission simulation completed successfully. Packet status updated to simulated.');
+        await openCaseDetail(activeCaseId);
+        await loadCases();
+      } catch (err) {
+        alert('Submission simulation failed: ' + err.message);
+      }
+    });
+  }
 
   // Operational Status Transition
   document.getElementById('modalApplyStatusBtn').addEventListener('click', async () => {

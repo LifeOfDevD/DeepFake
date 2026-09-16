@@ -11,6 +11,23 @@ escalationRouter.use(authMiddleware);
 escalationRouter.use(tenantMiddleware);
 
 /**
+ * GET /api/escalations
+ * List all escalations for the current organization
+ */
+escalationRouter.get('/', (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const service = new EscalationService();
+    const escalations = service.getEscalationsForOrganization(req.tenant!.organization_id);
+    res.json({
+      success: true,
+      data: escalations
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
  * GET /api/escalations/cases/:caseId
  * List all escalations for a given case
  */

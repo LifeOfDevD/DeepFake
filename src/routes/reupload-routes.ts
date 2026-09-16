@@ -14,6 +14,23 @@ reuploadRouter.use(authMiddleware);
 reuploadRouter.use(tenantMiddleware);
 
 /**
+ * GET /api/re-uploads
+ * List all related content and re-upload observations for the current organization
+ */
+reuploadRouter.get('/', (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const service = new ReuploadMonitoringService();
+    const observations = service.getObservationsForOrganization(req.tenant!.organization_id);
+    res.json({
+      success: true,
+      data: observations
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
  * GET /api/re-uploads/cases/:caseId
  * List all related content and re-upload observations for a case
  */

@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-09-16T16:37:45.000Z",
+  "project": "Digital Impersonation Response Desk",
+  "git": {
+    "commit": "bfe0885bec0f1dd317935001fe8452bd36d16952",
+    "branch": "main",
+    "baselineTag": "v1.0.0-rc1",
+    "workingTreeStatus": "DIRTY_CONTROLLED",
+    "modifiedFiles": [
+      "src/client/app.js",
+      "src/client/index.html",
+      "src/routes/escalation-routes.ts",
+      "src/routes/reupload-routes.ts",
+      "src/security/security-headers.ts",
+      "src/services/escalation-service.ts",
+      "src/services/reupload-monitoring-service.ts"
+    ],
+    "untrackedFiles": [
+      "docs/staging-deployment-report.md",
+      "results/staging-deployment-results.json",
+      "scripts/run-staging-verification.cjs"
+    ]
+  },
+  "runtime": {
+    "nodeVersion": "v22.14.0",
+    "framework": "Express 4 + TypeScript 5",
+    "database": "SQLite 3 via better-sqlite3",
+    "port": 4001,
+    "environment": "staging",
+    "activePid": 8190
+  },
+  "deployment": {
+    "primaryMeshUrl": "http://100.100.25.15:4001",
+    "localFallbackUrl": "http://127.0.0.1:4001",
+    "accessible": true,
+    "healthEndpoint": "/healthz/ready"
+  },
+  "databaseIntegrity": {
+    "databasePath": "./data/response_desk_staging.sqlite",
+    "journalMode": "wal",
+    "foreignKeys": 1,
+    "integrityCheck": "ok",
+    "foreignKeyViolations": 0,
+    "migrationsApplied": 9,
+    "migrationsPending": 0
+  },
+  "workers": {
+    "count": 8,
+    "types": [
+      "polling-detection",
+      "webhook-ingestion",
+      "reupload-monitoring",
+      "sla-escalation",
+      "evidence-retention",
+      "audit-stream",
+      "usage-metering",
+      "background-sync"
+    ],
+    "allRunning": true
+  },
+  "safetyPosture": {
+    "pilotMode": true,
+    "dryRunOnly": true,
+    "livePlatformActionsBlocked": true,
+    "liveBillingBlocked": true,
+    "liveNotificationsBlocked": true,
+    "killSwitchOperational": true,
+    "syntheticDataOnly": true,
+    "generalAvailability": "STRICTLY_WITHHELD"
+  }
+}

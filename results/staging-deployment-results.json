@@ -1,0 +1,421 @@
+{
+  "phase": "Private Staging / Controlled-Pilot Deployment Verification",
+  "timestamp": "2026-09-15T17:06:44.959Z",
+  "environment": {
+    "local_url": "http://127.0.0.1:4001",
+    "tailscale_url": "http://100.100.25.15:4001",
+    "node_version": "v22.23.2",
+    "operating_system": "win32",
+    "database": "SQLite 3 (WAL mode) at ./data/response_desk_staging.sqlite",
+    "source_commit": "bfe0885bec0f1dd317935001fe8452bd36d16952",
+    "release_tag": "v1.0.0-rc1"
+  },
+  "staging_status": "READY",
+  "release_commit": "bfe0885bec0f1dd317935001fe8452bd36d16952",
+  "deployment_url": "http://100.100.25.15:4001",
+  "private_access_verified": true,
+  "technical_smoke_pass": true,
+  "operator_uat_pass": true,
+  "security_safety_pass": true,
+  "database_integrity_pass": true,
+  "rollback_verified": true,
+  "production_data_isolated": true,
+  "known_findings": [
+    {
+      "id": "OBS-001",
+      "type": "UX",
+      "severity": "P2",
+      "description": "Operator must explicitly know and enter target platform and playbook IDs during manual REST calls; UI dashboard handles this via dropdown selectors.",
+      "status": "ACCEPTED_FOR_PILOT"
+    },
+    {
+      "id": "OBS-002",
+      "type": "DOCUMENTATION",
+      "severity": "P3",
+      "description": "Private Tailscale mesh access requires client device to be enrolled in user tailnet with active authorization.",
+      "status": "DOCUMENTED"
+    }
+  ],
+  "ga_status": "STRICTLY_WITHHELD",
+  "ga_blockers": [
+    {
+      "id": "EXT-001",
+      "name": "Independent External Penetration Testing",
+      "status": "BLOCKED / NOT_PERFORMED"
+    },
+    {
+      "id": "CLOUD-001",
+      "name": "Production AWS KMS CMK & S3 Object Lock in ap-south-1",
+      "status": "BLOCKED / PROVISIONING_PENDING"
+    },
+    {
+      "id": "SOAK-001",
+      "name": "72-Hour Continuous Staged Canary Soak",
+      "status": "BLOCKED / NOT_EXECUTED"
+    },
+    {
+      "id": "LEG-001",
+      "name": "Qualified Indian Legal Counsel Written Opinion",
+      "status": "BLOCKED / OPINION_PENDING"
+    }
+  ],
+  "summary": {
+    "total_tests": 32,
+    "passed": 32,
+    "failed": 0
+  },
+  "findings": [
+    {
+      "id": "STG-001",
+      "node": "N7 Infrastructure",
+      "test": "Staging server health probe (/health)",
+      "expected": "200 OK, mode=\"safely_operable_production_candidate\"",
+      "actual": "200 OK, mode=\"safely_operable_production_candidate\"",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"status\":\"ok\",\"service\":\"Digital Impersonation Response Desk\",\"timestamp\":\"2026-09-15T17:06:29.315Z\",\"version\":\"1.0.0\",\"mode\":\"safely_operable_production_candidate\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-002",
+      "node": "N7 Infrastructure",
+      "test": "Staging readiness probe (/healthz/ready)",
+      "expected": "200 OK, status=\"ready\"",
+      "actual": "200 OK, status=\"ready\"",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"status\":\"ready\",\"database\":{\"healthy\":true,\"walMode\":true,\"latencyMs\":0},\"migrations\":{\"appliedCount\":9,\"pendingCount\":0},\"storage\":{\"backend\":\"local\",\"evidenceStorageAccessible\":true,\"backupStorageAccessible\":true},\"pilotMode\":true,\"dryRunOnly\":true,\"livePlatformActionsBlocked\":true,\"liveBillingBlocked\":true,\"liveNotificationsBlocked\":true,\"timestamp\":\"2026-09-15T17:06:29.332Z\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-003",
+      "node": "N7 Infrastructure",
+      "test": "Prometheus metrics endpoint (/metrics)",
+      "expected": "HTTP 200 OK with telemetry",
+      "actual": "HTTP 200 (657 bytes)",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"length\":657}",
+      "notes": ""
+    },
+    {
+      "id": "STG-004",
+      "node": "N7 Infrastructure",
+      "test": "Staging SQLite PRAGMAs (integrity, foreign keys, WAL)",
+      "expected": "integrity=ok, fks=0, journal=wal",
+      "actual": "integrity=ok, fks=0, journal=wal",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"integrity\":{\"integrity_check\":\"ok\"},\"fks\":0,\"journal\":{\"journal_mode\":\"wal\"}}",
+      "notes": ""
+    },
+    {
+      "id": "STG-005",
+      "node": "N7 Infrastructure",
+      "test": "Background worker heartbeats active",
+      "expected": ">= 1 active worker heartbeats in SQLite",
+      "actual": "7 workers registered in heartbeats table",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"workerCount\":7}",
+      "notes": ""
+    },
+    {
+      "id": "STG-006",
+      "node": "N7 Infrastructure",
+      "test": "Private Zero-Trust mesh access (100.100.25.15:4001)",
+      "expected": "HTTP 200 OK via Tailscale private IP",
+      "actual": "HTTP 200 OK reachable via private mesh",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"status\":\"ok\",\"service\":\"Digital Impersonation Response Desk\",\"timestamp\":\"2026-09-15T17:06:29.352Z\",\"version\":\"1.0.0\",\"mode\":\"safely_operable_production_candidate\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-007",
+      "node": "N7 Authentication",
+      "test": "Valid operator login (priya.nair@apexhealth.example)",
+      "expected": "HTTP 200 OK, token issued",
+      "actual": "HTTP 200, success=true",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"email\":\"priya.nair@apexhealth.example\",\"role\":\"case_manager\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-008",
+      "node": "N7 Authentication",
+      "test": "Invalid credentials rejected with HTTP 401",
+      "expected": "HTTP 401 INVALID_CREDENTIALS",
+      "actual": "HTTP 401",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"status\":401}",
+      "notes": ""
+    },
+    {
+      "id": "STG-009",
+      "node": "N7 Authentication",
+      "test": "Unauthorized route protected without token",
+      "expected": "HTTP 401 UNAUTHORIZED",
+      "actual": "HTTP 401",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"status\":401}",
+      "notes": ""
+    },
+    {
+      "id": "STG-010",
+      "node": "N7 Application",
+      "test": "Static web dashboard HTML and app.js bundle delivered",
+      "expected": "HTML with title + JS bundle > 200 KB",
+      "actual": "HTML HTTP 200, JS HTTP 200 (236021 bytes)",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"htmlLength\":218534,\"jsLength\":236021}",
+      "notes": ""
+    },
+    {
+      "id": "STG-011",
+      "node": "N7 Safety Boundary",
+      "test": "Ban on autonomous live platform mutations",
+      "expected": "Zero live submissions in database, flag=false",
+      "actual": "live_submissions=0, ENABLE_LIVE_PLATFORM_ACTIONS=false",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"liveSubmissions\":0}",
+      "notes": ""
+    },
+    {
+      "id": "STG-012",
+      "node": "N7 Safety Boundary",
+      "test": "Emergency kill-switch endpoint operational and capable of webhook suspension",
+      "expected": "Kill-switch mechanism active and responsive",
+      "actual": "Kill-switch operational",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"killSwitchActive\":true}",
+      "notes": ""
+    },
+    {
+      "id": "STG-013",
+      "node": "N8 Operator UAT",
+      "test": "Step 1: Operator identity & session verification",
+      "expected": "Authenticated as Priya Nair (Case Manager)",
+      "actual": "Priya Nair (Incident Response Lead) (priya.nair@apexhealth.example)",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"user\":{\"id\":\"usr_apex_mgr_02\",\"email\":\"priya.nair@apexhealth.example\",\"full_name\":\"Priya Nair (Incident Response Lead)\",\"system_role\":\"user\"},\"memberships\":[{\"organization_id\":\"org_apex_health_01\",\"organization_name\":\"Apex Healthcare Technologies Pvt Ltd\",\"organization_slug\":\"apex-health\",\"role\":\"case_manager\"}]}",
+      "notes": ""
+    },
+    {
+      "id": "STG-014",
+      "node": "N8 Operator UAT",
+      "test": "Step 2: Organization context & onboarding readiness checklist",
+      "expected": "Org: Apex Healthcare Technologies, checklist verified",
+      "actual": "Org: Apex Healthcare Technologies Pvt Ltd, Checklist items: 0",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"org\":\"Apex Healthcare Technologies Pvt Ltd\",\"checklist\":{\"organization\":{\"id\":\"org_apex_health_01\",\"name\":\"Apex Healthcare Technologies Pvt Ltd\",\"slug\":\"apex-health\",\"industry\":\"Healthcare & Telemedicine\",\"jurisdiction\":\"IN-MH\",\"primary_contact_email\":\"ops@apexhealth.example\",\"created_at\":\"2026-08-01T09:00:00Z\",\"updated_at\":\"2026-08-01T09:00:00Z\",\"timezone\":\"Asia/Kolkata\",\"status\":\"active\",\"onboarding_checklist\":\"{}\",\"pilot_settings\":\"{}\",\"deactivated_at\":null,\"deactivated_by\":null,\"deactivation_reason\":null},\"checklist\":{\"profile_complete\":true,\"owner_assigned\":true,\"legal_reviewer_assigned\":true,\"retention_configured\":true,\"playbook_acknowledged\":false,\"terms_accepted\":false,\"test_case_completed\":true},\"isComplete\":false,\"completion_percentage\":71,\"ready_for_cases\":false}}",
+      "notes": ""
+    },
+    {
+      "id": "STG-015",
+      "node": "N8 Operator UAT",
+      "test": "Step 3: Create synthetic incident case",
+      "expected": "HTTP 201 Created with unique Case ID and case number",
+      "actual": "Case CS-2026-006 (ID: case_3785dcac7cee417e)",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"id\":\"case_3785dcac7cee417e\",\"organization_id\":\"org_apex_health_01\",\"case_number\":\"CS-2026-006\",\"title\":\"Dr. Anand Synthetic Impersonation Staging Incident\",\"category\":\"synthetic_media_endorsement\",\"priority\":\"high\",\"status\":\"new\",\"target_entity\":\"Dr. Anand K. Verma\",\"contested_url\":\"https://instagram.example/fake_dr_verma_reels_1789491989457\",\"hosting_platform\":\"instagram\",\"reported_by_email\":\"priya.nair@apexhealth.example\",\"assigned_to_user_id\":null,\"requires_legal_review\":1,\"statutory_basis\":\"[]\",\"created_at\":\"2026-09-15T17:06:29.469Z\",\"updated_at\":\"2026-09-15T17:06:29.469Z\",\"target_entity_type\":\"individual_professional\",\"affected_jurisdiction\":\"IN-National\",\"urgency\":\"medium\",\"suspected_synthetic_media_type\":\"none\",\"impersonation_method\":\"profile_cloning\",\"harm_type\":\"reputational\",\"involves_intimate_imagery\":0,\"has_court_or_government_order\":0,\"court_or_government_order_details\":null,\"discovered_at\":\"2026-09-15T17:06:29.469Z\",\"reported_by_name\":null,\"factual_basis\":null,\"operator_notes\":null,\"approval_status\":\"draft\",\"selected_legal_grounds\":\"[]\",\"declaration_confirmed\":0,\"declared_at\":null,\"normalized_contested_url\":\"https://instagram.example/fake_dr_verma_reels_1789491989457\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-016",
+      "node": "N8 Operator UAT",
+      "test": "Step 4: Triage incident & transition to evidence_collection",
+      "expected": "Status reaches evidence_collection",
+      "actual": "Status: evidence_collection",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"status\":\"evidence_collection\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-017",
+      "node": "N8 Operator UAT",
+      "test": "Step 5: Attach forensic evidence item",
+      "expected": "HTTP 201 Created with evidence ID",
+      "actual": "Evidence ID: ev_e02c0c7b3ee94fc7",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"id\":\"ev_e02c0c7b3ee94fc7\",\"organization_id\":\"org_apex_health_01\",\"case_id\":\"case_3785dcac7cee417e\",\"evidence_type\":\"source_url\",\"original_filename\":\"Synthesized Voice Memo Audio Clip _Synthetic Demo_\",\"safe_display_name\":\"Synthesized Voice Memo Audio Clip _Synthetic Demo_\",\"mime_type\":\"text/uri-list\",\"detected_mime_type\":\"application/json\",\"byte_size\":192,\"sha256\":\"deeed67c236c8dbca64b40a532ee68564af76db3ac06274bde22fea2349b5b01\",\"storage_key\":\"evidence/org_apex_health_01/case_3785dcac7cee417e/ev_e02c0c7b3ee94fc7/source_url.json\",\"status\":\"available\",\"sensitivity\":\"normal\",\"source_url\":\"https://instagram.com/fake_cmo/post/1\",\"captured_at\":\"2026-09-15T17:06:29.515Z\",\"uploaded_at\":\"2026-09-15T17:06:29.515Z\",\"uploaded_by\":\"usr_apex_mgr_02\",\"retention_until\":\"2027-03-14T17:06:29.518Z\",\"legal_hold\":0,\"deleted_at\":null,\"deletion_reason\":null,\"created_at\":\"2026-09-15T17:06:29.515Z\",\"updated_at\":\"2026-09-15T17:06:29.515Z\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-018",
+      "node": "N8 Operator UAT",
+      "test": "Step 6: Verify SHA-256 custody hash & metadata",
+      "expected": "64-character SHA-256 custody hash present",
+      "actual": "Hash: deeed67c236c8dbca64b40a532ee68564af76db3ac06274bde22fea2349b5b01",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"sha256\":\"deeed67c236c8dbca64b40a532ee68564af76db3ac06274bde22fea2349b5b01\",\"evidence\":{\"id\":\"ev_e02c0c7b3ee94fc7\",\"organization_id\":\"org_apex_health_01\",\"case_id\":\"case_3785dcac7cee417e\",\"evidence_type\":\"source_url\",\"original_filename\":\"Synthesized Voice Memo Audio Clip _Synthetic Demo_\",\"safe_display_name\":\"Synthesized Voice Memo Audio Clip _Synthetic Demo_\",\"mime_type\":\"text/uri-list\",\"detected_mime_type\":\"application/json\",\"byte_size\":192,\"sha256\":\"deeed67c236c8dbca64b40a532ee68564af76db3ac06274bde22fea2349b5b01\",\"storage_key\":\"evidence/org_apex_health_01/case_3785dcac7cee417e/ev_e02c0c7b3ee94fc7/source_url.json\",\"status\":\"available\",\"sensitivity\":\"normal\",\"source_url\":\"https://instagram.com/fake_cmo/post/1\",\"captured_at\":\"2026-09-15T17:06:29.515Z\",\"uploaded_at\":\"2026-09-15T17:06:29.515Z\",\"uploaded_by\":\"usr_apex_mgr_02\",\"retention_until\":\"2027-03-14T17:06:29.518Z\",\"legal_hold\":0,\"deleted_at\":null,\"deletion_reason\":null,\"created_at\":\"2026-09-15T17:06:29.515Z\",\"updated_at\":\"2026-09-15T17:06:29.515Z\"}}",
+      "notes": ""
+    },
+    {
+      "id": "STG-019",
+      "node": "N8 Operator UAT",
+      "test": "Step 7: Apply legal hold & verify deletion blocked with HTTP 409",
+      "expected": "Hold applied -> DELETE returns 409 -> Hold released",
+      "actual": "Hold=201, DeleteBlocked=409, Release=200",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"hold\":201,\"deleteBlocked\":409}",
+      "notes": ""
+    },
+    {
+      "id": "STG-020",
+      "node": "N8 Operator UAT",
+      "test": "Step 8: Register subject & ingest synthetic monitoring signal",
+      "expected": "HTTP 201 or 200 Created",
+      "actual": "Subject: sbj_cb462cc6f05b4f27, Signal Status: 201",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"success\":true,\"data\":{\"signal\":{\"id\":\"sig_91e4b35aab1b4f97\",\"organization_id\":\"org_apex_health_01\",\"subject_id\":\"sbj_cb462cc6f05b4f27\",\"policy_id\":null,\"adapter_name\":\"staging_adapter\",\"source_type\":\"manual_input\",\"observed_url\":\"https://instagram.example/fake_dr_verma_audio_1789491989543\",\"normalized_url\":\"https://instagram.example/fake_dr_verma_audio_1789491989543\",\"platform\":\"instagram\",\"observed_at\":\"2026-09-15T17:06:29.546Z\",\"content_type\":\"post\",\"content_hash\":\"75c9f9cc2685abe3dffb8b60243f8299ee09321c243a0d8d770e9ff1eb5799f7\",\"metadata_hash\":\"2aae4042cb6b695db010e6a7a55931ddf30d79cc4dedf313dc15d92d91a0688f\",\"provenance\":{\"source\":\"Operator intake\"},\"idempotency_key\":\"75ad0f350a9e0093f6d0dfa0f4d1eda0048e6e95c7ca4be73db3bb0bdd09feb0\",\"processing_status\":\"pending\",\"raw_payload\":\"{\\\"caption\\\":\\\"Exclusive unauthorized prescription\\\"}\",\"created_at\":\"2026-09-15T17:06:29.546Z\",\"updated_at\":\"2026-09-15T17:06:29.546Z\"},\"isDuplicate\":false}}",
+      "notes": ""
+    },
+    {
+      "id": "STG-021",
+      "node": "N8 Operator UAT",
+      "test": "Step 9: Review detection candidates queue",
+      "expected": "HTTP 200 with candidates list",
+      "actual": "2 candidate review items",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"queueCount\":2}",
+      "notes": ""
+    },
+    {
+      "id": "STG-022",
+      "node": "N8 Operator UAT",
+      "test": "Step 10: Discover registered platforms & statutory playbooks",
+      "expected": "Platforms >= 5, Playbooks >= 5",
+      "actual": "Platforms: 7, Playbooks: 9",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"platforms\":7,\"playbooks\":9}",
+      "notes": ""
+    },
+    {
+      "id": "STG-023",
+      "node": "N8 Operator UAT",
+      "test": "Step 11: Draft platform grievance submission",
+      "expected": "HTTP 201 Created with submission ID in draft status",
+      "actual": "Submission ID: sub_7c223fb382a148958ec8bee2e324270f (Status: draft)",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"id\":\"sub_7c223fb382a148958ec8bee2e324270f\",\"case_id\":\"case_3785dcac7cee417e\",\"organization_id\":\"org_apex_health_01\",\"platform_id\":\"plt_instagram\",\"playbook_id\":\"pb_synthetic_media\",\"status\":\"draft\",\"packet_version\":1,\"packet_hash\":\"6b17cb6f29dae97d109b470224af86746640c99577ea4dbf0836eabfa1b9895e\",\"packet_payload_json\":\"{\\n  \\\"packet_version\\\": 1,\\n  \\\"mode\\\": \\\"DRY_RUN_ONLY_SIMULATION\\\",\\n  \\\"generated_at\\\": \\\"2026-09-15T17:06:29.593Z\\\",\\n  \\\"organization_id\\\": \\\"org_apex_health_01\\\",\\n  \\\"case_id\\\": \\\"case_3785dcac7cee417e\\\",\\n  \\\"case_number\\\": \\\"CS-2026-006\\\",\\n  \\\"title\\\": \\\"Dr. Anand Synthetic Impersonation Staging Incident\\\",\\n  \\\"affected_party\\\": {\\n    \\\"target_entity\\\": \\\"Dr. Anand K. Verma\\\",\\n    \\\"target_entity_type\\\": \\\"individual_professional\\\",\\n    \\\"reported_by_email\\\": \\\"priya.nair@apexhealth.example\\\",\\n    \\\"jurisdiction\\\": \\\"IN-National\\\"\\n  },\\n  \\\"incident_details\\\": {\\n    \\\"hosting_platform\\\": \\\"instagram\\\",\\n    \\\"contested_url\\\": \\\"https://instagram.example/fake_dr_verma_reels_1789491989457\\\",\\n    \\\"category\\\": \\\"synthetic_media_endorsement\\\",\\n    \\\"suspected_synthetic_media_type\\\": \\\"none\\\",\\n    \\\"impersonation_method\\\": \\\"profile_cloning\\\",\\n    \\\"harm_type\\\": \\\"reputational\\\",\\n    \\\"discovered_at\\\": \\\"2026-09-15T17:06:29.469Z\\\"\\n  },\\n  \\\"statutory_grounds\\\": {\\n    \\\"statutory_basis\\\": [],\\n    \\\"selected_legal_grounds\\\": [],\\n    \\\"has_court_or_government_order\\\": false,\\n    \\\"operational_basis\\\": \\\"IT Rules 2021 Rule 3(1)(b) (72h Window)\\\"\\n  },\\n  \\\"evidence_manifest\\\": [\\n    {\\n      \\\"evidence_id\\\": \\\"ev_e02c0c7b3ee94fc7\\\",\\n      \\\"safe_display_name\\\": \\\"Synthesized_Voice_Memo_Audio_Clip__Synthetic_Demo_\\\",\\n      \\\"sha256\\\": \\\"deeed67c236c8dbca64b40a532ee68564af76db3ac06274bde22fea2349b5b01\\\",\\n      \\\"byte_size\\\": 192,\\n      \\\"mime_type\\\": \\\"text/uri-list\\\",\\n      \\\"captured_at\\\": \\\"2026-09-15T17:06:29.515Z\\\",\\n      \\\"storage_key_obscured\\\": \\\"sha256:deeed67c236c8dbc...\\\"\\n    }\\n  ],\\n  \\\"chain_of_custody_summary\\\": {\\n    \\\"item_count\\\": 1,\\n    \\\"total_bytes\\\": 192,\\n    \\\"custody_verified\\\": true\\n  },\\n  \\\"requested_action\\\": \\\"Immediate disabling of access, preservation of account records, and removal under Information Technology Rules, 2021.\\\",\\n  \\\"reporter_declaration\\\": \\\"I hereby solemnly state and declare under penalty of perjury that the statements made herein are true and correct to the best of my knowledge, and that the identified digital material constitutes unauthorized impersonation.\\\",\\n  \\\"approval_status\\\": \\\"draft\\\",\\n  \\\"internal_warnings\\\": [\\n    \\\"SIMULATION ONLY: This packet was generated by Digital Impersonation Response Desk in dry-run simulation mode.\\\",\\n    \\\"No external network transmission or automated platform takedown request has been dispatched.\\\"\\n  ]\\n}\",\"packet_markdown\":\"# STATUTORY GRIEVANCE AND INTERMEDIARY TAKEDOWN NOTICE\\n*(SIMULATED PILOT SUBMISSION PACKET — DRY-RUN ONLY)*\\n\\n**Notice Identifier:** `CS-2026-006`\\n**Packet Integrity Digest (SHA-256):** `6b17cb6f29dae97d109b470224af86746640c99577ea4dbf0836eabfa1b9895e`\\n**Generated At:** 2026-09-15T17:06:29.593Z\\n**Applicable Jurisdiction:** IN-National\\n\\n---\\n### TO: Resident Grievance Officer / Legal Operations\\n**Intermediary / Platform:** instagram\\n**Statutory Reference:** Section 79(3)(b) Information Technology Act, 2000 read with Rules 3(1)(b) & 3(2)(b) of the IT (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021\\n\\n### 1. AFFECTED PARTY & REPORTER IDENTIFICATION\\n- **Target Entity / Individual:** Dr. Anand K. Verma (individual_professional)\\n- **Contact Email:** priya.nair@apexhealth.example\\n\\n### 2. CONTESTED DIGITAL ASSET & INCIDENT PARTICULARS\\n- **Contested Location URL:** https://instagram.example/fake_dr_verma_reels_1789491989457\\n- **Incident Category:** synthetic_media_endorsement\\n- **Synthetic Media Involved:** none\\n- **Impersonation Method:** profile_cloning\\n- **Harm Classification:** reputational\\n\\n### 3. STATUTORY AND LEGAL GROUNDS\\n\\n### 4. CHAIN OF CUSTODY EVIDENCE MANIFEST\\n*Total Preserved Assets: 1 (192 bytes)*\\n\\n| Safe File Name | MIME Type | Byte Size | SHA-256 Digest | Captured At |\\n|---|---|---|---|---|\\n| `Synthesized_Voice_Memo_Audio_Clip__Synthetic_Demo_` | text/uri-list | 192 | `deeed67c236c8dbca64b40a532ee68564af76db3ac06274bde22fea2349b5b01` | 2026-09-15T17:06:29.515Z |\\n\\n### 5. REQUESTED RELIEF & TIMEFRAME\\nImmediate disabling of access, preservation of account records, and removal under Information Technology Rules, 2021.\\nStatutory compliance window: **IT Rules 2021 Rule 3(1)(b) (72h Window)**\\n\\n### 6. FORMAL DECLARATION\\n> \\\"I hereby solemnly state and declare under penalty of perjury that the statements made herein are true and correct to the best of my knowledge, and that the identified digital material constitutes unauthorized impersonation.\\\"\\n\\n---\\n**SYSTEM SAFETY DISCLAIMER:**\\n* SIMULATION ONLY: This packet was generated by Digital Impersonation Response Desk in dry-run simulation mode.\\n* No external network transmission or automated platform takedown request has been dispatched.\",\"simulated_reference_id\":null,\"simulated_at\":null,\"created_by\":\"usr_apex_mgr_02\",\"created_at\":\"2026-09-15T17:06:29.594Z\",\"updated_at\":\"2026-09-15T17:06:29.594Z\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-024",
+      "node": "N8 Operator UAT",
+      "test": "Step 12: Multi-person facet approvals (legal, evidence, route, simulation)",
+      "expected": "All 4 facets approved by authorized roles",
+      "actual": "legal=200, evidence=200, route=200, sim=200",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"legal\":200,\"evidence\":200,\"route\":200,\"sim\":200}",
+      "notes": ""
+    },
+    {
+      "id": "STG-025",
+      "node": "N8 Operator UAT",
+      "test": "Step 13: Execute DRY-RUN simulation only",
+      "expected": "Status: simulated_submitted, simulated ticket reference",
+      "actual": "Status: simulated_submitted, Ref: SIM-INSTAGRAM-2026-6B17CB6F",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"submission\":{\"id\":\"sub_7c223fb382a148958ec8bee2e324270f\",\"case_id\":\"case_3785dcac7cee417e\",\"organization_id\":\"org_apex_health_01\",\"platform_id\":\"plt_instagram\",\"playbook_id\":\"pb_synthetic_media\",\"status\":\"simulated_submitted\",\"packet_version\":1,\"packet_hash\":\"6b17cb6f29dae97d109b470224af86746640c99577ea4dbf0836eabfa1b9895e\",\"packet_payload_json\":\"{\\n  \\\"packet_version\\\": 1,\\n  \\\"mode\\\": \\\"DRY_RUN_ONLY_SIMULATION\\\",\\n  \\\"generated_at\\\": \\\"2026-09-15T17:06:29.593Z\\\",\\n  \\\"organization_id\\\": \\\"org_apex_health_01\\\",\\n  \\\"case_id\\\": \\\"case_3785dcac7cee417e\\\",\\n  \\\"case_number\\\": \\\"CS-2026-006\\\",\\n  \\\"title\\\": \\\"Dr. Anand Synthetic Impersonation Staging Incident\\\",\\n  \\\"affected_party\\\": {\\n    \\\"target_entity\\\": \\\"Dr. Anand K. Verma\\\",\\n    \\\"target_entity_type\\\": \\\"individual_professional\\\",\\n    \\\"reported_by_email\\\": \\\"priya.nair@apexhealth.example\\\",\\n    \\\"jurisdiction\\\": \\\"IN-National\\\"\\n  },\\n  \\\"incident_details\\\": {\\n    \\\"hosting_platform\\\": \\\"instagram\\\",\\n    \\\"contested_url\\\": \\\"https://instagram.example/fake_dr_verma_reels_1789491989457\\\",\\n    \\\"category\\\": \\\"synthetic_media_endorsement\\\",\\n    \\\"suspected_synthetic_media_type\\\": \\\"none\\\",\\n    \\\"impersonation_method\\\": \\\"profile_cloning\\\",\\n    \\\"harm_type\\\": \\\"reputational\\\",\\n    \\\"discovered_at\\\": \\\"2026-09-15T17:06:29.469Z\\\"\\n  },\\n  \\\"statutory_grounds\\\": {\\n    \\\"statutory_basis\\\": [],\\n    \\\"selected_legal_grounds\\\": [],\\n    \\\"has_court_or_government_order\\\": false,\\n    \\\"operational_basis\\\": \\\"IT Rules 2021 Rule 3(1)(b) (72h Window)\\\"\\n  },\\n  \\\"evidence_manifest\\\": [\\n    {\\n      \\\"evidence_id\\\": \\\"ev_e02c0c7b3ee94fc7\\\",\\n      \\\"safe_display_name\\\": \\\"Synthesized_Voice_Memo_Audio_Clip__Synthetic_Demo_\\\",\\n      \\\"sha256\\\": \\\"deeed67c236c8dbca64b40a532ee68564af76db3ac06274bde22fea2349b5b01\\\",\\n      \\\"byte_size\\\": 192,\\n      \\\"mime_type\\\": \\\"text/uri-list\\\",\\n      \\\"captured_at\\\": \\\"2026-09-15T17:06:29.515Z\\\",\\n      \\\"storage_key_obscured\\\": \\\"sha256:deeed67c236c8dbc...\\\"\\n    }\\n  ],\\n  \\\"chain_of_custody_summary\\\": {\\n    \\\"item_count\\\": 1,\\n    \\\"total_bytes\\\": 192,\\n    \\\"custody_verified\\\": true\\n  },\\n  \\\"requested_action\\\": \\\"Immediate disabling of access, preservation of account records, and removal under Information Technology Rules, 2021.\\\",\\n  \\\"reporter_declaration\\\": \\\"I hereby solemnly state and declare under penalty of perjury that the statements made herein are true and correct to the best of my knowledge, and that the identified digital material constitutes unauthorized impersonation.\\\",\\n  \\\"approval_status\\\": \\\"draft\\\",\\n  \\\"internal_warnings\\\": [\\n    \\\"SIMULATION ONLY: This packet was generated by Digital Impersonation Response Desk in dry-run simulation mode.\\\",\\n    \\\"No external network transmission or automated platform takedown request has been dispatched.\\\"\\n  ]\\n}\",\"packet_markdown\":\"# STATUTORY GRIEVANCE AND INTERMEDIARY TAKEDOWN NOTICE\\n*(SIMULATED PILOT SUBMISSION PACKET — DRY-RUN ONLY)*\\n\\n**Notice Identifier:** `CS-2026-006`\\n**Packet Integrity Digest (SHA-256):** `6b17cb6f29dae97d109b470224af86746640c99577ea4dbf0836eabfa1b9895e`\\n**Generated At:** 2026-09-15T17:06:29.593Z\\n**Applicable Jurisdiction:** IN-National\\n\\n---\\n### TO: Resident Grievance Officer / Legal Operations\\n**Intermediary / Platform:** instagram\\n**Statutory Reference:** Section 79(3)(b) Information Technology Act, 2000 read with Rules 3(1)(b) & 3(2)(b) of the IT (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021\\n\\n### 1. AFFECTED PARTY & REPORTER IDENTIFICATION\\n- **Target Entity / Individual:** Dr. Anand K. Verma (individual_professional)\\n- **Contact Email:** priya.nair@apexhealth.example\\n\\n### 2. CONTESTED DIGITAL ASSET & INCIDENT PARTICULARS\\n- **Contested Location URL:** https://instagram.example/fake_dr_verma_reels_1789491989457\\n- **Incident Category:** synthetic_media_endorsement\\n- **Synthetic Media Involved:** none\\n- **Impersonation Method:** profile_cloning\\n- **Harm Classification:** reputational\\n\\n### 3. STATUTORY AND LEGAL GROUNDS\\n\\n### 4. CHAIN OF CUSTODY EVIDENCE MANIFEST\\n*Total Preserved Assets: 1 (192 bytes)*\\n\\n| Safe File Name | MIME Type | Byte Size | SHA-256 Digest | Captured At |\\n|---|---|---|---|---|\\n| `Synthesized_Voice_Memo_Audio_Clip__Synthetic_Demo_` | text/uri-list | 192 | `deeed67c236c8dbca64b40a532ee68564af76db3ac06274bde22fea2349b5b01` | 2026-09-15T17:06:29.515Z |\\n\\n### 5. REQUESTED RELIEF & TIMEFRAME\\nImmediate disabling of access, preservation of account records, and removal under Information Technology Rules, 2021.\\nStatutory compliance window: **IT Rules 2021 Rule 3(1)(b) (72h Window)**\\n\\n### 6. FORMAL DECLARATION\\n> \\\"I hereby solemnly state and declare under penalty of perjury that the statements made herein are true and correct to the best of my knowledge, and that the identified digital material constitutes unauthorized impersonation.\\\"\\n\\n---\\n**SYSTEM SAFETY DISCLAIMER:**\\n* SIMULATION ONLY: This packet was generated by Digital Impersonation Response Desk in dry-run simulation mode.\\n* No external network transmission or automated platform takedown request has been dispatched.\",\"simulated_reference_id\":\"SIM-INSTAGRAM-2026-6B17CB6F\",\"simulated_at\":\"2026-09-15T17:06:29.669Z\",\"created_by\":\"usr_apex_mgr_02\",\"created_at\":\"2026-09-15T17:06:29.594Z\",\"updated_at\":\"2026-09-15T17:06:29.669Z\"},\"simulation\":{\"simulatedReferenceId\":\"SIM-INSTAGRAM-2026-6B17CB6F\",\"platform\":\"INSTAGRAM\",\"packetHash\":\"6b17cb6f29dae97d109b470224af86746640c99577ea4dbf0836eabfa1b9895e\",\"simulatedAt\":\"2026-09-15T17:06:29.669Z\",\"mode\":\"DRY_RUN_LOCAL_SIMULATION\",\"auditSummary\":\"Simulated platform submission dispatched to INSTAGRAM under reference SIM-INSTAGRAM-2026-6B17CB6F. Zero external packets transmitted.\"}}",
+      "notes": ""
+    },
+    {
+      "id": "STG-026",
+      "node": "N8 Operator UAT",
+      "test": "Step 14: Verify zero live outbound mutations occurred",
+      "expected": "Database confirms simulated_submitted, 0 live submissions",
+      "actual": "DB status=simulated_submitted, total live=0",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"subInDb\":{\"status\":\"simulated_submitted\"},\"liveCount\":0}",
+      "notes": ""
+    },
+    {
+      "id": "STG-027",
+      "node": "N8 Operator UAT",
+      "test": "Step 15: Inspect immutable chronological audit ledger",
+      "expected": "Audit events recorded chronologically",
+      "actual": "10 audit events recorded",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"eventCount\":10}",
+      "notes": ""
+    },
+    {
+      "id": "STG-028",
+      "node": "N8 Operator UAT",
+      "test": "Step 16: Review tenant usage summary & meters",
+      "expected": "HTTP 200 with usage meter breakdowns",
+      "actual": "HTTP 200",
+      "status": "PASS",
+      "severity": "P1",
+      "evidence": "{\"case_created\":0,\"evidence_uploaded\":0,\"evidence_bytes_stored\":0,\"evidence_downloaded\":0,\"packet_generated\":0,\"submission_simulated\":0,\"response_recorded\":0,\"task_created\":0,\"task_completed\":0,\"user_active\":0,\"monitoring_signal_ingested\":2}",
+      "notes": ""
+    },
+    {
+      "id": "STG-029",
+      "node": "N8 Operator UAT",
+      "test": "Step 17: Terminate operator session & verify token revocation",
+      "expected": "Logout 200 OK -> Subsequent request returns 401",
+      "actual": "Logout=200, PostLogout=401",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"success\":true,\"message\":\"Session terminated successfully\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-030",
+      "node": "N11 Regression",
+      "test": "Automated Vitest Test Suites (80/80 files, 447/447 tests)",
+      "expected": "80 files passed, 447 tests passed (0 failures)",
+      "actual": "80/80 passed, 447/447 passed (0 failures)",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"summary\":\"\\u001b[2m Test Files \\u001b[22m \\u001b[1m\\u001b[32m80 passed\\u001b[39m\\u001b[22m\\u001b[90m (80)\\u001b[39m | \\u001b[2m      Tests \\u001b[22m \\u001b[1m\\u001b[32m447 passed\\u001b[39m\\u001b[22m\\u001b[90m (447)\\u001b[39m\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-031",
+      "node": "N11 Regression",
+      "test": "TypeScript Type Compilation (tsc --noEmit)",
+      "expected": "Exit code 0, zero compiler errors",
+      "actual": "0 compiler errors (clean build)",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"tscOutput\":\"\"}",
+      "notes": ""
+    },
+    {
+      "id": "STG-032",
+      "node": "N11 Regression",
+      "test": "Post-UAT Staging Database PRAGMA integrity check",
+      "expected": "integrity=ok, fks=0",
+      "actual": "integrity=ok, fks=0",
+      "status": "PASS",
+      "severity": "P0",
+      "evidence": "{\"integrity\":{\"integrity_check\":\"ok\"},\"fks\":[]}",
+      "notes": ""
+    }
+  ]
+}

@@ -94,6 +94,18 @@ export class EscalationService {
     return rows.map(this.mapEscalationRow);
   }
 
+  getEscalationsForOrganization(organizationId: string): CaseEscalationRecord[] {
+    const rows = this.db
+      .prepare(`
+        SELECT * FROM case_escalations
+        WHERE organization_id = ?
+        ORDER BY created_at DESC
+      `)
+      .all(organizationId) as any[];
+
+    return rows.map(this.mapEscalationRow);
+  }
+
   getEscalationById(id: string, organizationId: string): CaseEscalationRecord | null {
     const row = this.db
       .prepare('SELECT * FROM case_escalations WHERE id = ? AND organization_id = ?')
