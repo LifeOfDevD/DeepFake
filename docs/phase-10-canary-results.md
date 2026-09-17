@@ -10,7 +10,7 @@
 
 ## 1. Executive Summary
 
-Phase 9 established a comprehensive **4-Stage Controlled Canary Protocol** ([`docs/production-canary-protocol.md`](file:///C:/Users/Chirag%20Arora/.gemini/antigravity/scratch/digital-impersonation-response-desk/docs/production-canary-protocol.md)) with automated synthetic tenant probes, Prometheus telemetry scraping, and tripwire rollback triggers.
+Phase 9 established a comprehensive **4-Stage Controlled Canary Protocol** ([`docs/production-canary-protocol.md`](./production-canary-protocol.md)) with automated synthetic tenant probes, Prometheus telemetry scraping, and tripwire rollback triggers.
 
 This report audits the execution readiness of the canary protocol, benchmarks synthetic performance, and documents the operational conditions required prior to General Availability promotion.
 

@@ -57,15 +57,15 @@ To ensure absolute safety, regulatory compliance, and zero unverified side-effec
 
 The controlled pilot operations suite is comprehensively documented in `docs/`:
 
-1. [Pilot Operations SOP](file:///docs/pilot-operations.md): Standard Operating Procedures, operator roles, daily rhythms, and safety tripwires.
-2. [Deployment & Containerization](file:///docs/deployment.md): Multi-stage Dockerfile, Docker Compose, non-root security, health checks, reverse proxy.
-3. [Backup, Verification & Recovery](file:///docs/backup-and-recovery.md): WAL-safe SQLite backups, manifest verification, and disaster recovery.
-4. [Usage & Entitlements](file:///docs/usage-and-entitlements.md): Plan tiers, feature gating matrix, hard quotas, and overage rates.
-5. [Billing Dry-Run](file:///docs/billing-dry-run.md): Dry-run billing provider, simulated invoices, 18% GST, simulation watermarks.
-6. [Notification Outbox](file:///docs/notification-outbox.md): Transactional outbox architecture, local adapters, in-app notification center.
-7. [Worker Operations](file:///docs/worker-operations.md): Background worker execution, scheduled loops, heartbeat observability.
-8. [Customer Onboarding](file:///docs/customer-onboarding.md): 7-step onboarding checklist, cryptographic invitations, archival soft deactivation.
-9. [Indian Cyber-Law Taxonomy](file:///docs/decisions/0002-india-first-legal-and-platform-taxonomy.md): Statutory references and platform playbooks.
+1. [Pilot Operations SOP](./pilot-operations.md): Standard Operating Procedures, operator roles, daily rhythms, and safety tripwires.
+2. [Deployment & Containerization](./deployment.md): Multi-stage Dockerfile, Docker Compose, non-root security, health checks, reverse proxy.
+3. [Backup, Verification & Recovery](./backup-and-recovery.md): WAL-safe SQLite backups, manifest verification, and disaster recovery.
+4. [Usage & Entitlements](./usage-and-entitlements.md): Plan tiers, feature gating matrix, hard quotas, and overage rates.
+5. [Billing Dry-Run](./billing-dry-run.md): Dry-run billing provider, simulated invoices, 18% GST, simulation watermarks.
+6. [Notification Outbox](./notification-outbox.md): Transactional outbox architecture, local adapters, in-app notification center.
+7. [Worker Operations](./worker-operations.md): Background worker execution, scheduled loops, heartbeat observability.
+8. [Customer Onboarding](./customer-onboarding.md): 7-step onboarding checklist, cryptographic invitations, archival soft deactivation.
+9. [Indian Cyber-Law Taxonomy](./decisions/0002-india-first-legal-and-platform-taxonomy.md): Statutory references and platform playbooks.
 
 ---
 

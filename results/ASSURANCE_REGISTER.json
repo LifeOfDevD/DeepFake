@@ -1,0 +1,84 @@
+{
+  "last_updated": "2026-09-16T18:30:00.000Z",
+  "project": "Digital Impersonation Response Desk",
+  "release_candidate": "v1.0.0-controlled-pilot-rc2",
+  "control_plane_status": "ACTIVE",
+  "activities": [
+    {
+      "id": "EXT-001",
+      "title": "Independent External Security Assessment",
+      "owner": "External Security Assessment Partner (Independent Assessor)",
+      "status": "OPEN",
+      "dependency": [],
+      "prerequisites_prepared": [
+        "docs/external-assurance/EXT-001_SCOPE.md",
+        "docs/external-assurance/EXT-001_ARCHITECTURE.md",
+        "docs/external-assurance/EXT-001_RULES_OF_ENGAGEMENT.md",
+        "docs/external-assurance/EXT-001_TEST_ACCOUNT_MATRIX.md",
+        "docs/external-assurance/EXT-001_EVIDENCE_CHECKLIST.md"
+      ],
+      "evidence": [
+        "results/EXT-001_FINDINGS.json"
+      ],
+      "verification": [],
+      "blocking_reason": "Awaiting engagement of appropriately qualified independent external security assessor and delivery of final attestation report.",
+      "last_updated": "2026-09-16T18:30:00.000Z"
+    },
+    {
+      "id": "CLOUD-001",
+      "title": "Production AWS Infrastructure Assurance",
+      "owner": "Cloud & Infrastructure Security Engineering",
+      "status": "OPEN",
+      "dependency": [],
+      "prerequisites_prepared": [
+        "docs/external-assurance/CLOUD-001_ASSURANCE.md",
+        "terraform/main.tf",
+        "terraform/kms.tf",
+        "terraform/s3_object_lock.tf",
+        "terraform/iam.tf",
+        "terraform/variables.tf",
+        "terraform/outputs.tf"
+      ],
+      "evidence": [
+        "results/CLOUD-001_EVIDENCE.json"
+      ],
+      "verification": [],
+      "blocking_reason": "Terraform configuration is defined, but actual live AWS ap-south-1 provisioning, KMS CMK creation, and S3 Object Lock compliance verification await authorized AWS account credentials.",
+      "last_updated": "2026-09-16T18:30:00.000Z"
+    },
+    {
+      "id": "SOAK-001",
+      "title": "72-Hour Staged Canary",
+      "owner": "Release & Site Reliability Engineering",
+      "status": "BLOCKED",
+      "dependency": [
+        "CLOUD-001"
+      ],
+      "prerequisites_prepared": [
+        "docs/external-assurance/SOAK-001_CANARY_PLAN.md"
+      ],
+      "evidence": [
+        "results/SOAK-001_EVIDENCE.json"
+      ],
+      "verification": [],
+      "blocking_reason": "Requires deployment of production canary topology on AWS (CLOUD-001) prior to initiating continuous 72-hour observation window.",
+      "last_updated": "2026-09-16T18:30:00.000Z"
+    },
+    {
+      "id": "LEG-001",
+      "title": "Qualified Indian Legal Counsel Review",
+      "owner": "External Cyber Law & Regulatory Counsel",
+      "status": "OPEN",
+      "dependency": [],
+      "prerequisites_prepared": [
+        "docs/external-assurance/LEG-001_COUNSEL_PACKAGE.md"
+      ],
+      "evidence": [
+        "results/LEG-001_EVIDENCE.json"
+      ],
+      "verification": [],
+      "blocking_reason": "Briefing package prepared covering 5 statutory questions under IT Rules 2021 and DPDP 2023; formal signed written opinion from qualified counsel pending.",
+      "last_updated": "2026-09-16T18:30:00.000Z"
+    }
+  ]
+}

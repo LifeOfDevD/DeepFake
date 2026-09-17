@@ -1,0 +1,31 @@
+{
+  "last_updated": "2026-09-16T18:05:00.000Z",
+  "activity_id": "EXT-001",
+  "title": "Independent External Security Assessment Findings",
+  "release_candidate": "v1.0.0-controlled-pilot-rc2",
+  "commit": "e7db64ce58111a6a5f1bbf6b49d0b3e6dc6fb2db",
+  "status": "AWAITING_EXTERNAL_ASSESSMENT",
+  "external_assessor": {
+    "firm_name": "PENDING_ENGAGEMENT",
+    "lead_assessor": "PENDING_ENGAGEMENT",
+    "assessment_dates": null,
+    "accreditation": null
+  },
+  "package_delivered": {
+    "scope_doc": "docs/external-assurance/EXT-001_SCOPE.md",
+    "architecture_doc": "docs/external-assurance/EXT-001_ARCHITECTURE.md",
+    "rules_of_engagement": "docs/external-assurance/EXT-001_RULES_OF_ENGAGEMENT.md",
+    "account_matrix": "docs/external-assurance/EXT-001_TEST_ACCOUNT_MATRIX.md",
+    "evidence_checklist": "docs/external-assurance/EXT-001_EVIDENCE_CHECKLIST.md"
+  },
+  "summary": {
+    "total_findings": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "informational": 0
+  },
+  "findings": [],
+  "notes": "No external findings have been received. Antigravity will not fabricate or simulate external security findings. This register remains ready to ingest findings once the independent assessor completes testing."
+}

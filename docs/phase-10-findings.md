@@ -67,7 +67,7 @@ FINDINGS SUMMARY:
 * **Attack Surface:** All HTTP routes, websocket/SSE connections, storage downloads, and provider integrations.
 * **Evidence:** Phase 9 documentation explicitly states: *"External penetration testing has NOT BEEN PERFORMED."* No third-party accredited audit report exists in the repository.
 * **Impact:** Undiscovered zero-day vulnerabilities, business logic flaws, or side-channel exploits may exist that automated tests cannot detect.
-* **Recommended Action:** Commission an independent, OSCP/CREST-accredited cybersecurity evaluation firm to execute the grey-box penetration test scoped in [`docs/penetration-testing-checklist.md`](file:///C:/Users/Chirag%20Arora/.gemini/antigravity/scratch/digital-impersonation-response-desk/docs/penetration-testing-checklist.md).
+* **Recommended Action:** Commission an independent, OSCP/CREST-accredited cybersecurity evaluation firm to execute the grey-box penetration test scoped in [`docs/penetration-testing-checklist.md`](./penetration-testing-checklist.md).
 * **Status:** **`OPEN (GA BLOCKER)`**
 
 ---
@@ -91,7 +91,7 @@ FINDINGS SUMMARY:
 * **Severity:** `P0 for GA / P1 for Pilot (SRE Operational Blocker)`
 * **Asset:** SRE Cluster & Worker Fleet
 * **Attack Surface:** Production runtime memory leaks, event loop latency, and SQLite WAL locking under sustained multi-day loads.
-* **Evidence:** The 4-stage canary protocol ([`docs/production-canary-protocol.md`](file:///C:/Users/Chirag%20Arora/.gemini/antigravity/scratch/digital-impersonation-response-desk/docs/production-canary-protocol.md)) mandates a 24-hour soak for Stage 1 and a 48-hour soak for Stage 2. Stage 0 synthetic verification passed, but the live 72-hour cumulative soak has not run in staging infrastructure.
+* **Evidence:** The 4-stage canary protocol ([`docs/production-canary-protocol.md`](./production-canary-protocol.md)) mandates a 24-hour soak for Stage 1 and a 48-hour soak for Stage 2. Stage 0 synthetic verification passed, but the live 72-hour cumulative soak has not run in staging infrastructure.
 * **Impact:** Delayed runtime anomalies (e.g. slow memory growth, long-running worker deadlock) can only be ruled out through real-time continuous soak testing.
 * **Recommended Action:** Deploy the release candidate container to staging infrastructure and execute the 72-hour continuous soak test with Prometheus monitoring.
 * **Status:** **`OPEN (GA BLOCKER)`**
@@ -104,7 +104,7 @@ FINDINGS SUMMARY:
 * **Severity:** `P0 for GA / P1 for Pilot (Regulatory Assurance Blocker)`
 * **Asset:** Statutory Grievance Workflows & Privacy Data Inventory
 * **Attack Surface:** Compliance with IT Act 2000, IT Rules 2021, and DPDP Act 2023.
-* **Evidence:** Five critical regulatory questions are flagged as `requires_counsel = true` in [`docs/production-data-inventory.md`](file:///C:/Users/Chirag%20Arora/.gemini/antigravity/scratch/digital-impersonation-response-desk/docs/production-data-inventory.md):
+* **Evidence:** Five critical regulatory questions are flagged as `requires_counsel = true` in [`docs/production-data-inventory.md`](./production-data-inventory.md):
   1. IT Rules 2021 preservation mandates (180 days / 365 days) vs. DPDP Section 12(3) erasure requests.
   2. Section 79 intermediary safe-harbor immunity for the platform when generating statutory notices.
   3. DPDP Section 16 cross-border transfer constraints for foreign cloud storage or APIs.

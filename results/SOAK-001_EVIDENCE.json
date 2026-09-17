@@ -1,0 +1,47 @@
+{
+  "id": "SOAK-001",
+  "title": "72-Hour Continuous Staged Canary Soak",
+  "status": "BLOCKED",
+  "blocking_dependencies": [
+    "CLOUD-001"
+  ],
+  "evaluated_at": "2026-09-16T18:10:00.000Z",
+  "target_environment": "AWS ECS ap-south-1 / ALB Weighted Canary",
+  "release_evaluated": "v1.0.0-controlled-pilot-rc2",
+  "plan_specification": "docs/external-assurance/SOAK-001_CANARY_PLAN.md",
+  "planned_stages": [
+    {
+      "stage": 1,
+      "traffic_percentage": 5,
+      "target_duration_hours": 24,
+      "status": "NOT_STARTED"
+    },
+    {
+      "stage": 2,
+      "traffic_percentage": 25,
+      "target_duration_hours": 48,
+      "status": "NOT_STARTED"
+    }
+  ],
+  "total_planned_duration_hours": 72,
+  "total_completed_duration_hours": 0,
+  "sli_targets": {
+    "http_error_rate": "< 0.01%",
+    "api_latency_p99_ms": "< 500ms",
+    "heap_growth_net_pct": "< 10%",
+    "worker_crash_count": 0,
+    "uncaught_exceptions": 0,
+    "sqlite_lock_timeouts": 0
+  },
+  "telemetry_summary": {
+    "requests_observed": 0,
+    "error_rate": null,
+    "p99_latency_ms": null,
+    "heap_growth_pct": null,
+    "worker_crashes": 0,
+    "tripwires_fired": 0
+  },
+  "blocking_reason": "Execution of the 72-hour continuous canary soak is strictly gated on live AWS infrastructure deployment (CLOUD-001). Under no circumstances will synthetic benchmarks be substituted for physical multi-day canary observation.",
+  "ga_blocker": true,
+  "verdict": "BLOCKED"
+}

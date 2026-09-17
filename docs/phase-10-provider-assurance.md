@@ -30,7 +30,7 @@ Phase 8 selected exactly one official external integration: **YouTube Data API v
 
 | Requirement / Surface | Specification | Verification Method & Code Location | Status |
 |---|---|---|---|
-| **OAuth 2.0 Authorization Scope** | `https://www.googleapis.com/auth/youtube.readonly` | Verified in [`src/services/integrations/youtube-adapter.ts`](file:///C:/Users/Chirag%20Arora/.gemini/antigravity/scratch/digital-impersonation-response-desk/src/services/integrations/youtube-adapter.ts). Scopes are hardcoded to read-only channel and video metadata inspection. | `PASS` |
+| **OAuth 2.0 Authorization Scope** | `https://www.googleapis.com/auth/youtube.readonly` | Verified in [`src/services/integrations/youtube-adapter.ts`](../src/services/integrations/youtube-adapter.ts). Scopes are hardcoded to read-only channel and video metadata inspection. | `PASS` |
 | **Cryptographic State Nonces** | 128-bit cryptographic random nonce with 15-minute TTL. | Nonces verified upon OAuth redirect callback (`/api/integrations/oauth/callback`); replayed or expired nonces rejected (`tests/integration/provider-oauth.test.ts`). | `PASS` |
 | **Token Encryption at Rest** | AES-256-GCM authenticated encryption (`desk_enc_v1`). | Tokens stored as `(ciphertext, iv, tag)` with 100,000-iteration PBKDF2 key derivation. Unencrypted tokens never stored (`tests/unit/token-encryption.test.ts`). | `PASS` |
 | **Multi-Key Rotation Fallback** | `ENCRYPTION_FALLBACK_KEYS` supports up to 5 historical keys. | `SecretsManager.reencryptAllProviderTokens(db)` migrates all stored tokens in a single atomic transaction without service interruption (`tests/security/production-hardening.test.ts`). | `PASS` |

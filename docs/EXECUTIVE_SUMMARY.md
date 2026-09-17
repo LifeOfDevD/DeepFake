@@ -78,7 +78,7 @@ No P0 (critical blocking) or P1 (operational blocking) defects exist in the code
 
 The codebase is refrozen at **`v1.0.0-controlled-pilot-rc2`**. Application source code is locked against further modification.
 
-General Availability remains **STRICTLY WITHHELD**. The critical path to GA promotion requires completing the four external assurance packages detailed in [`docs/EXTERNAL_ASSURANCE_PREP.md`](file:///C:/Users/Chirag%20Arora/.gemini/antigravity/scratch/digital-impersonation-response-desk/docs/EXTERNAL_ASSURANCE_PREP.md):
+General Availability remains **STRICTLY WITHHELD**. The critical path to GA promotion requires completing the four external assurance packages detailed in [`docs/EXTERNAL_ASSURANCE_PREP.md`](./EXTERNAL_ASSURANCE_PREP.md):
 1. **EXT-001:** Third-Party CREST/CERT-In Penetration Testing
 2. **CLOUD-001:** Production AWS Infrastructure as Code (Terraform)
 3. **SOAK-001:** 72-Hour Continuous Multi-Worker Soak Testing

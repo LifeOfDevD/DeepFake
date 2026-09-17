@@ -1,0 +1,48 @@
+{
+  "id": "LEG-001",
+  "title": "Qualified Indian Legal Counsel Review",
+  "status": "OPEN",
+  "evaluated_at": "2026-09-16T18:15:00.000Z",
+  "jurisdiction": "Republic of India",
+  "governing_statutes": [
+    "Information Technology Act, 2000 (Sections 66D, 79)",
+    "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 (Rules 3, 3A)",
+    "Digital Personal Data Protection Act, 2023 (Sections 9, 12, 16, 17)",
+    "Bharatiya Sakshya Adhiniyam, 2023 (Section 63) / Indian Evidence Act, 1872 (Section 65B)"
+  ],
+  "briefing_package": "docs/external-assurance/LEG-001_COUNSEL_PACKAGE.md",
+  "questions_submitted": 5,
+  "statutory_questions": [
+    {
+      "q_id": "Q1",
+      "topic": "IT Rules Rule 3(1)(h) 180-day WORM retention vs DPDP Section 12(3) Right to Erasure",
+      "status": "AWAITING_OPINION"
+    },
+    {
+      "q_id": "Q2",
+      "topic": "Intermediary Safe Harbor & Section 79 IT Act liability boundary for notice formulation",
+      "status": "AWAITING_OPINION"
+    },
+    {
+      "q_id": "Q3",
+      "topic": "Section 16 DPDP Cross-Border Data Transfer to international platforms",
+      "status": "AWAITING_OPINION"
+    },
+    {
+      "q_id": "Q4",
+      "topic": "Section 9 DPDP Minor Protection and Verifiable Parental Consent",
+      "status": "AWAITING_OPINION"
+    },
+    {
+      "q_id": "Q5",
+      "topic": "Rule 3A IT Rules Grievance Appellate Committee (GAC) appeal dossiers and Section 65B/63 admissibility",
+      "status": "AWAITING_OPINION"
+    }
+  ],
+  "legal_opinion_received": false,
+  "counsel_firm": null,
+  "signed_opinion_date": null,
+  "blocking_reason": "Formal signed written legal opinion from practicing Indian technology and cyber law counsel is required prior to GA promotion. Legal interpretations and regulatory compliance cannot be synthetically generated or self-certified.",
+  "ga_blocker": true,
+  "verdict": "BLOCKED"
+}
