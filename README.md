@@ -3,7 +3,7 @@
 > **India-first B2B incident-response platform for digital impersonation and synthetic-media (deepfake) incidents.**  
 > *Evidence Custody → Threat Triage → Multi-Role Human Review → Statutory Notice Preparation → SLA Tracking → GAC Escalation*
 
-[![CI Pipeline](https://github.com/ChiragArora22/DeepFake/actions/workflows/ci.yml/badge.svg)](https://github.com/ChiragArora22/DeepFake/actions/workflows/ci.yml)
+[![CI Pipeline](https://github.com/LifeOfDevD/DeepFake/actions/workflows/ci.yml/badge.svg)](https://github.com/LifeOfDevD/DeepFake/actions/workflows/ci.yml)
 [![Tests](https://img.shields.io/badge/tests-447%20passed%20%2F%2080%20files-brightgreen)](tests/)
 [![TypeScript](https://img.shields.io/badge/typescript-5.8%20strict-blue)](tsconfig.json)
 [![Node.js](https://img.shields.io/badge/node.js-v22%20LTS-darkgreen)](package.json)
@@ -362,7 +362,7 @@ digital-impersonation-response-desk/
 ### Step-by-Step Quick Start
 ```bash
 # 1. Clone repository
-git clone https://github.com/ChiragArora22/DeepFake.git
+git clone https://github.com/LifeOfDevD/DeepFake.git
 cd DeepFake
 
 # 2. Install dependencies
